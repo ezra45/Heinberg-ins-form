@@ -7,6 +7,15 @@ from email.mime.base import MIMEBase
 from email import encoders
 from configparser import ConfigParser
 
+# .ini file used to store sensitive info
+config = ConfigParser()
+config.read('config.ini') #----------------------- CHANGE THIS
+to_address = config['INFO']['email']
+from_address = config['INFO']['email']
+psw = config['INFO']['password']
+host = config['INFO']['host']
+port = config['INFO']['port']
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -31,8 +40,8 @@ def submission():
 
     # Create email body
     msg = MIMEMultipart()
-    msg['From'] = "josh@heinberginsurance.com"
-    msg['To'] = "josh@heinberginsurance.com"
+    msg['From'] = from_address
+    msg['To'] = to_address
     msg['Subject'] = "Test Email"
 
     body = f"""\
@@ -60,15 +69,6 @@ def submission():
     attach_file(img2)
     attach_file(img3)
     attach_file(img4)
-
-    # Uses .ini file to store sensitive info
-    config = ConfigParser()
-    config.read('config.ini') #----------------------- CHANGE THIS
-    to_address = config['INFO']['email']
-    from_address = config['INFO']['email']
-    psw = config['INFO']['password']
-    host = config['INFO']['host']
-    port = config['INFO']['port']
 
     # Sending mail
     server = smtplib.SMTP(host, port)

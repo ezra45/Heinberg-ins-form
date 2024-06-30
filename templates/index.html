@@ -27,6 +27,20 @@
 
         <h5 class="mb-4">Please answer the questions below.</h5>
 
+        <!-- For handling flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endwith %}
+
         <form action="/submission" method="POST" enctype="multipart/form-data">
 
           <!-- Name -->
@@ -61,25 +75,25 @@
 
           <!-- Front of license -->
           <div class="form-group mb-4">
-            <label for="imgUpload1">Attach a picture of the FRONT of your license:</label>
+            <label for="imgUpload1">Attach a picture of the FRONT of your driver's license:</label>
             <input type="file" class="form-control-file" id="imgUpload1" accept="image/*, application/pdf" name="img1">
           </div>
 
           <!-- Back of license -->
           <div class="form-group mb-4">
-            <label for="imgUpload2">Attach a picture of the BACK of your license:</label>
+            <label for="imgUpload2">Attach a picture of the BACK of your driver's license:</label>
             <input type="file" class="form-control-file" id="imgUpload2" accept="image/*, application/pdf" name="img2">
           </div>
 
           <!-- Front of spouse's license -->
           <div class="form-group mb-4">
-            <label for="imgUpload3">Attach a picture of the FRONT of your spouse's license:</label>
+            <label for="imgUpload3">Attach a picture of the FRONT of your spouse's driver's license:</label>
             <input type="file" class="form-control-file" id="imgUpload3" accept="image/*, application/pdf" name="img3">
           </div>
 
           <!-- Back of spouse's license -->
           <div class="form-group mb-4">
-            <label for="imgUpload4">Attach a picture of the BACK of your spouse's license:</label>
+            <label for="imgUpload4">Attach a picture of the BACK of your spouse's driver's license:</label>
             <input type="file" class="form-control-file" id="imgUpload4" accept="image/*, application/pdf" name="img4">
           </div>
       

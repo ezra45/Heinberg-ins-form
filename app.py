@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import smtplib
 import os
 from email.mime.multipart import MIMEMultipart
@@ -6,8 +6,10 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from configparser import ConfigParser
+from validators import is_valid_name, is_valid_address, is_valid_phone, is_valid_email
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 
 @app.route('/')
 def index():
@@ -22,6 +24,32 @@ def submission():
     address = request.form.get("address")
     phone_number = request.form.get("phone")
     email = request.form.get("email")
+
+    # Validation
+    has_error = False
+    
+    if not is_valid_name(name):
+        flash("Invalid format for 'name' field. Accepted characters are A-Z, a-z, hyphens, spaces, and apostrophes.")
+        has_error = True
+    
+    if not is_valid_name(spouse_name, allow_empty=True):
+        flash("Invalid format for 'spouse's  name' field. If you leave this field blank, make sure nothing is entered into the box. Accepted characters are A-Z, a-z, hyphens, spaces, and apostrophes.")
+        has_error = True
+
+    if not is_valid_address(address):
+        flash("Invalid address. Please try again.")
+        has_error = True
+    
+    if not is_valid_phone(phone_number):
+        flash("Invalid phone number format. Please try again.")
+        has_error = True
+
+    if not is_valid_email(email):
+        flash("Invalid email. Please try again.")
+        has_error = True
+    
+    if has_error:
+        return redirect(url_for('index'))
     
     # Get image data
     img1 = request.files.get("img1")
@@ -42,10 +70,10 @@ def submission():
     msg = MIMEMultipart()
     msg['From'] = from_address
     msg['To'] = to_address
-    msg['Subject'] = "Test Email"
+    msg['Subject'] = "NEW CUSTOMER INFORMATION"
 
     body = f"""\
-    This is a test email. Here is the data from your customer:
+    Here is the data from your customer:
         
     Name: {name}
     Spouse's name: {spouse_name}

@@ -20,6 +20,7 @@ def submission():
 
     # Get text data
     name = request.form.get("name")
+    dob = request.form.get("dob")
     spouse_name = request.form.get("s_name")
     address = request.form.get("address")
     phone_number = request.form.get("phone")
@@ -76,6 +77,7 @@ def submission():
     Here is the data from your customer:
         
     Name: {name}
+    Date of birth: {dob}
     Spouse's name: {spouse_name}
     Address: {address}
     Phone number: {phone_number}

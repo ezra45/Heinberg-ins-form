@@ -78,7 +78,7 @@ def submission():
         
     Name: {name}
     Date of birth: {dob}
-    Spouse's name: {spouse_name}
+    Spouse's name and DOB: {spouse_name}
     Address: {address}
     Phone number: {phone_number}
     Email: {email}

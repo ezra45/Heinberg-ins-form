@@ -57,8 +57,14 @@
 
           <!-- Name of spouse -->
           <div class="form-group mb-4">
-            <label for="spouseName">Spouse's full name and date of birth (if applicable):</label>
-            <input type="text" class="form-control" id="spouseName" placeholder="Enter your spouse's name and date of birth (MM/DD/YYYY)" name="s_name">
+            <label for="spouseName">Spouse's full name (if applicable):</label>
+            <input type="text" class="form-control" id="spouseName" placeholder="Enter your spouse's name" name="s_name">
+          </div>
+
+          <!-- Spouse's date of birth -->
+          <div class="form-group mb-4">
+            <label for="s_dateOfBirth">Spouse's date of birth (if applicable):</label>
+            <input type="date" class="form-control" id="s_dateOfBirth" name="s_dob">
           </div>
 
           <!-- Address -->
@@ -101,6 +107,12 @@
           <div class="form-group mb-4">
             <label for="imgUpload4">Attach a picture of the BACK of your spouse's driver's license:</label>
             <input type="file" class="form-control-file" id="imgUpload4" accept="image/jpeg, image/png, image/gif, image/tiff, image/heic, application/pdf" name="img4">
+          </div>
+
+          <!-- Teaching contract -->
+          <div class="form-group mb-4">
+            <label for="imgUpload5">Teaching contract (if applicable):</label>
+            <input type="file" class="form-control-file" id="imgUpload5" accept="image/jpeg, image/png, image/gif, image/tiff, image/heic, application/pdf" name="img5">
           </div>
       
           <!-- Submit Button -->

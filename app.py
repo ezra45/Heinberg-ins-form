@@ -22,6 +22,7 @@ def submission():
     name = request.form.get("name")
     dob = request.form.get("dob")
     spouse_name = request.form.get("s_name")
+    spouse_dob = request.form.get("s_dob")
     address = request.form.get("address")
     phone_number = request.form.get("phone")
     email = request.form.get("email")
@@ -57,6 +58,7 @@ def submission():
     img2 = request.files.get("img2")
     img3 = request.files.get("img3")
     img4 = request.files.get("img4")
+    img5 = request.files.get("img5")
 
     # .ini file used to store sensitive info
     config = ConfigParser()
@@ -73,17 +75,20 @@ def submission():
     msg['To'] = to_address
     msg['Subject'] = "NEW CUSTOMER INFORMATION"
 
-    body = f"""\
-    Here is the data from your customer:
-        
-    Name: {name}
-    Date of birth: {dob}
-    Spouse's name and DOB: {spouse_name}
-    Address: {address}
-    Phone number: {phone_number}
-    Email: {email}
-    """
-    msg.attach(MIMEText(body, 'plain'))
+    fields = [
+        ("Name", name),
+        ("Date of birth", dob),
+        ("Spouse's name", spouse_name),
+        ("Spouse's date of birth", spouse_dob),
+        ("Address", address),
+        ("Phone number", phone_number),
+        ("Email", email)
+    ]
+    lines = [f"{label}: {response}" for label, response in fields if response]
+    body = "\n".join(lines)
+    full = f"Here is the data from your customer:\n\n{body}"
+
+    msg.attach(MIMEText(full, 'plain'))
     
     # Function for attaching files to the email
     def attach_file(file):
@@ -99,6 +104,7 @@ def submission():
     attach_file(img2)
     attach_file(img3)
     attach_file(img4)
+    attach_file(img5)
 
     # Sending mail
     server = smtplib.SMTP(host, port)

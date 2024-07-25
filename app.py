@@ -51,7 +51,14 @@ def submission():
         has_error = True
     
     if has_error:
-        return redirect(url_for('index'))
+        return render_template('index.html',
+                                name=name, 
+                                dob=dob, 
+                                spouse_name=spouse_name, 
+                                spouse_dob=spouse_dob, 
+                                address=address, 
+                                phone_number=phone_number, 
+                                email=email)
     
     # Get image data
     img1 = request.files.get("img1")

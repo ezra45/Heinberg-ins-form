@@ -46,43 +46,43 @@
           <!-- Name -->
           <div class="form-group mb-4">
             <label for="yourName">Your full name (as shown on your driver's license):</label>
-            <input type="text" class="form-control" id="yourName" placeholder="Enter your name" name="name" required>
+            <input type="text" class="form-control" id="yourName" placeholder="Enter your name" name="name" value="{{ name }}" required>
           </div>
 
           <!-- Date of birth -->
           <div class="form-group mb-4">
             <label for="dateOfBirth">Your date of birth:</label>
-            <input type="date" class="form-control" id="dateOfBirth" name="dob" required>
+            <input type="date" class="form-control" id="dateOfBirth" name="dob" value="{{ dob }}" required>
           </div>
 
           <!-- Name of spouse -->
           <div class="form-group mb-4">
             <label for="spouseName">Spouse's full name (if applicable):</label>
-            <input type="text" class="form-control" id="spouseName" placeholder="Enter your spouse's name" name="s_name">
+            <input type="text" class="form-control" id="spouseName" placeholder="Enter your spouse's name" name="s_name" value="{{ spouse_name }}">
           </div>
 
           <!-- Spouse's date of birth -->
           <div class="form-group mb-4">
             <label for="s_dateOfBirth">Spouse's date of birth (if applicable):</label>
-            <input type="date" class="form-control" id="s_dateOfBirth" name="s_dob">
+            <input type="date" class="form-control" id="s_dateOfBirth" name="s_dob" value="{{ spouse_dob }}">
           </div>
 
           <!-- Address -->
           <div class="form-group mb-4">
             <label for="address">Address:</label>
-            <input type="text" class="form-control" id="address" placeholder="E.g. 123 Your St, City, State, Zip" name="address" required>
+            <input type="text" class="form-control" id="address" placeholder="E.g. 123 Your St, City, State, Zip" name="address" value="{{ address }}" required>
           </div>
 
           <!-- Phone number -->
           <div class="form-group mb-4">
             <label for="phone">Phone number:</label>
-            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone"required>
+            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" value="{{ phone_number }}" required>
           </div>
 
           <!-- Email -->
           <div class="form-group mb-4">
             <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" required>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" value="{{ email }}" required>
           </div>
 
           <!-- Front of license -->

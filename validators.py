@@ -2,7 +2,7 @@ import phonenumbers
 from email_validator import validate_email, EmailNotValidError
 
 def is_valid_name(name, allow_empty=False):
-    allowed = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'- ,.")
+    allowed = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'- ,.`~")
     if allow_empty and name == "":
         return True
     if len(name) < 2 or len(name) > 100:

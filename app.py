@@ -69,7 +69,7 @@ def submission():
 
     # .ini file used to store sensitive info
     config = ConfigParser()
-    config.read('config.ini') #----------------------- CHANGE THIS
+    config.read('user_config.ini')
     to_address = config['INFO']['email']
     from_address = config['INFO']['email']
     psw = config['INFO']['password']
@@ -127,4 +127,4 @@ def thanks():
     return render_template("thanks.html")
 
 if __name__ == '__main__':
-    app.run(debug=True) #----------------------- CHANGE THIS
+    app.run(debug=False)
